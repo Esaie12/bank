@@ -4,6 +4,10 @@
     <h3 class="admin-heading bg-offwhite">
         <p>Demander de l'argent </p>
     </h3>
+    <div class="row">
+        <div class="col-6 text-center"><a href="" class="btn btn-secondary " >Voir les demandes envoyées</a></div>
+    <div class="col-6 text-center"><a href="" class="btn btn-secondary ">Voir les demandes recues</a></div>
+    </div>
 
     <div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
         <form id="send-money" method="post" action="{{ route('u.request.starter') }}" class="form bg-offwhite py-5" >

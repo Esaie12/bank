@@ -9,6 +9,13 @@
         <div class="col-12">
             <h3>Mes cartes bancaires</h3>
         </div>
+        @if (Session::get('msg-update'))
+        <div class="alert alert-success">
+            Modification bien apportée à  la carte
+        </div>
+        @endif
+
+
         @foreach ($cards as $item)
         <div class="col-12 col-sm-6 col-lg-4 cardBox">
             <div class="account-card account-card-primary">
@@ -32,10 +39,11 @@
                     </div>
                 </div>
                 <div class="account-card-overlay">
-                    <a href="#" data-target="#edit-card-details" class="text-light btn-link pbtn"
-                        data-id="edit-card-details"> <span class="mr-1"><i class="fas fa-edit"></i></span>Edit</a>
-                    <a href="{{ route('u.bank.delete',$item->id) }}" class="text-light btn-link mx-2"> <span class="mr-1"><i
-                                class="fas fa-minus-circle"></i></span>Delete</a>
+                    <a href="{{ route('u.bank.edit',$item->id) }}"  class=" btn-link "> <span class="mr-1"><i class="fas fa-edit"></i></span>Modifier</a>
+
+                        <a href="{{ route('u.bank.delete',$item->id) }}" class="text-light btn-link mx-2">
+                        <span class="mr-1"><i
+                                class="fas fa-minus-circle"></i></span>Effacer</a>
                 </div>
             </div>
         </div>

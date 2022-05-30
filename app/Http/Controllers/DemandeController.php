@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Demande;
+use App\Models\Transaction;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -63,6 +64,17 @@ class DemandeController extends Controller
             $re->destinate= "Admin";
             $re->save();
 
+            $tr= new Transaction();
+            $tr->content = "Demande d'argent à un admin" ;
+            $tr->author_type ="User" ;
+            $tr->user_id =Auth::user()->id ;
+            $tr->receiver_id = Auth::user()->id;
+            $tr->amount = $req['amount'];
+            $tr->account_amount = $req['amount'] ;
+            $tr->operation_type ="Demande d'argent";
+            $tr->save();
+
+
             return view('usersView.request.successAdmin');
 
         }elseif($req['type']=="User"){
@@ -85,6 +97,16 @@ class DemandeController extends Controller
             $re->statut=0;
             $re->destinate= "User";
             $re->save();
+
+            $tr= new Transaction();
+            $tr->content = "Demande d'argent à un au utilisateur " ;
+            $tr->author_type ="User" ;
+            $tr->user_id =Auth::user()->id ;
+            $tr->receiver_id = $req['idRec'];
+            $tr->amount = $req['amount'];
+            $tr->account_amount = $req['amount'] ;
+            $tr->operation_type ="Demande d'argent";
+            $tr->save();
 
             $req = DB::table('demandes')->join('users', 'users.id', 'demandes.receve')->where('idUser',Auth::user()->id)
             ->where('receve',$req['idRec'])->where('amount',$req['amount'])->where('delai',$req['dateBut'])

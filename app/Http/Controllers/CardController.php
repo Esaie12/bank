@@ -52,5 +52,32 @@ class CardController extends Controller
         return redirect()->route('u.bank');
     }
 
+    function Show($id){
+        $card= Card::find($id);
+        return view('usersView.bank.edit', ['card'=>$card]);
+    }
+
+    function EditSave(Request $req){
+        $req->validate([
+            'numberCard'=>['required',  'integer'],
+            'dateExp'=>'required',
+            'cvv'=> ['required',  "min:3"],
+            'nameCard'=> ['required', 'string'],
+            'provider'=>'required',
+        ]);
+
+        $card = Card::find($req['id']);
+        $card->numberCard   =$req['numberCard'];
+        $card->dateExp  =$req['dateExp'];
+        $card->cvv  =$req['cvv'];
+        $card->nameCard =$req['nameCard'];
+        $card->statut  =0;
+        $card->provider  =$req['provider'];
+        $card->save();
+
+
+        return redirect()->route('u.bank')->with('msg-update');
+    }
+
 
 }

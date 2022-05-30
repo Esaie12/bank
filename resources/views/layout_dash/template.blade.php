@@ -73,7 +73,7 @@
         <!-- Header end -->
 
         <!-- Admin Hero section-->
-        <!--div class="hero-section">
+        <div class="hero-section">
             <div class="container">
                 <div class="row  profile-complete-area">
                     <div class="col">
@@ -130,7 +130,7 @@
                 </div>
 
             </div>
-        </div-->
+        </div>
         <!-- Admin End of Hero section-->
 
         <!-- Profile bar -->

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Deposit;
+
+use App\Models\Transaction;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -78,6 +80,16 @@ class DepositController extends Controller
                 $us->solde=$solde- $req['amount'];
                 $us->save();
 
+                $tr= new Transaction();
+                $tr->content = "Deposer de l'argent sur le compte d'un admin " ;
+                $tr->author_type ="User" ;
+                $tr->user_id =Auth::user()->id ;
+                $tr->receiver_id = Auth::user()->id ;
+                $tr->amount = $req['amount'];
+                $tr->account_amount = $req['amount'] ;
+                $tr->operation_type ="Depot d'argent";
+                $tr->save();
+
 
                 return view('usersView.sendMoney.succesAdmin');
 
@@ -111,6 +123,17 @@ class DepositController extends Controller
                 $us = User::find(Auth::user()->id);
                 $us->solde=$solde- $req['amount'];
                 $us->save();
+
+                $tr= new Transaction();
+                $tr->content = "Deposer de l'argent sur le compte d'un autre user " ;
+                $tr->author_type ="User" ;
+                $tr->user_id =Auth::user()->id ;
+                $tr->receiver_id = $req['idRec'];
+                $tr->amount = $req['amount'];
+                $tr->account_amount = $req['amount'] ;
+                $tr->operation_type ="Depot d'argent";
+                $tr->save();
+
 
                 $user = User::find($req['idRec'])->first();
 

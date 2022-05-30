@@ -103,7 +103,7 @@
                                 <input type="text" value="{{$item->adresse}}" class="form-control" required name="adresse">
                             </div>
                         </div>
-                        <button class="btn btn-default" type="submit"><i class="far fa-save"></i> Save Chnages</button>
+                        <button class="btn btn-default" type="submit"><i class="far fa-save"></i> Sauvegarder les changements</button>
                     </div>
                     @elseif(Auth::user()->type_compte ==3)
                     <input type="hidden" name="type" value="pro" >
@@ -194,7 +194,7 @@
                                 <input type="text" value="{{$item->adresseSociete}}" class="form-control"  name="adresseSociete">
                             </div>
                         </div>
-                        <button class="btn btn-default" type="submit"><i class="far fa-save"></i> Save Chnages</button>
+                        <button class="btn btn-default" type="submit"><i class="far fa-save"></i>Sauvegarder les changements</button>
                     </div>
 
                     @endif

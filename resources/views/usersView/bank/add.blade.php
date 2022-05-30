@@ -1,8 +1,7 @@
 @extends('layout_dash.template')
 @section('contenu')
 
-<h2 class="admin-heading">Ajouter des comptes bancaires <a href="order-card.html" class="order-card"> <i
-            class="fas fa-plus"></i> Order Card</a></h2>
+<h2 class="admin-heading">Ajouter des comptes bancaires </h2>
 <!-- Credit or Debit Cards  -->
 <div class="infoItems bg-offwhite  shadow">
     <div class="row">

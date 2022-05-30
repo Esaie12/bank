@@ -5,10 +5,7 @@
     <h3 class="admin-heading">Deposer de l'argent sur mon compte</h3>
     <ul class="nav nav-pills">
         <li class="nav-item">
-            <a class="nav-link" href="{{route('createTransaction')}}">Commencer</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link active" href="#">Confirmer</a>
+            <a class="nav-link active" href="{{route('createTransaction')}}">Commencer</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#">Success</a>

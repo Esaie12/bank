@@ -118,6 +118,10 @@ Route::group(['middleware'=>[ 'userAcces', 'authGroup', 'verifiedGroup'] ],funct
         Route::get('/bank/delete/{id}',[CardController::class, 'Effacer'])
         ->name('bank.delete')->where("id","[0-9]+");
 
+        Route::get('/bank/edit/{id}',[CardController::class, 'Show'])
+        ->name('bank.edit')->where("id","[0-9]+");
+        Route::post('/bank/edit-save', [CardController::class, 'EditSave'])->name('bank.edit.save');
+
         Route::get('/deposit-money', [DepositController::class, 'Start'] )->name('depot');
 
         //
