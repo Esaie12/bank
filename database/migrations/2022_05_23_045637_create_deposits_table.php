@@ -15,13 +15,26 @@ class CreateDepositsTable extends Migration
     {
         Schema::create('deposits', function (Blueprint $table) {
             $table->id();
-            $table->integer('idUser');
+            $table->bigInteger('idUser')->unsigned();
+            $table->foreign('idUser')->references('id')->on('users');
+
+            $table->bigInteger('idReceve');
+            $table->string('destinate'); //User ou Amdin
+
             $table->float('price');
             $table->string('devise');
             $table->text('description');
             $table->string('paiement_method');
             $table->integer('statut');
             $table->string('date_operation');
+
+            //Pour gérer les demandes coté admin
+            $table->date('datePay')->nullable();
+            $table->float('amount')->nullable();
+            $table->boolean('reject')->default(false);
+            $table->date('reject_date')->nullable();
+            $table->string('reject_raison')->nullable();
+
             $table->timestamps();
         });
     }

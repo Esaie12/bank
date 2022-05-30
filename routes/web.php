@@ -11,7 +11,8 @@ use App\Http\Controllers\admin\CurrencyController as AdminCurrencyController;
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\DepositController;
 use App\Http\Controllers\DemandeController;
-
+use App\Http\Controllers\PayPalController;
+use App\Http\Controllers\PaymentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -119,8 +120,14 @@ Route::group(['middleware'=>[ 'userAcces', 'authGroup', 'verifiedGroup'] ],funct
 
         Route::get('/deposit-money', [DepositController::class, 'Start'] )->name('depot');
 
-        Route::get('/send-money', [DepositController::class, 'SendAutherUser'] )->name('send');
-        Route::post('/send-money-verify', [DepositController::class, 'SendAutherverify'] )->name('send.verify');
+        //
+        Route::get('/make-payment-store', [PaymentController::class, 'MakePaiementStore'] )->name('make.paiment.store');
+        Route::get('/make-payment', [PaymentController::class, 'MakePaiement'] )->name('make.paiment');
+        Route::post('/make-payment-next', [PaymentController::class, 'MakePaiementNext'] )->name('make.payment.next');
+
+        Route::get('/send-money', [DepositController::class, 'SendMoney'] )->name('send');
+        Route::post('/send-money-verify', [DepositController::class, 'SendMoneyVerify'] )->name('send.verify');
+        Route::post('/send-money-confirm', [DepositController::class,'Confirm'])->name('send.confirm');
 
         Route::get('/request-money-payment', [DemandeController::class,'Starter'])->name('request.starter');
         Route::post('/request-money-payment', [DemandeController::class,'Starter_Post'])->name('request.starter');
@@ -136,6 +143,13 @@ Route::group(['middleware'=>[ 'userAcces', 'authGroup', 'verifiedGroup'] ],funct
 
 });
 
+
+Route::get('create-transaction', [PayPalController::class, 'createTransaction'])->name('createTransaction');
+Route::post('create-transaction-confirm',[PayPalController::class, 'createTransactionConfirm'])->name('createTransaction.confirm');
+
+Route::post('process-transaction', [PayPalController::class, 'processTransaction'])->name('processTransaction');
+Route::get('success-transaction', [PayPalController::class, 'successTransaction'])->name('successTransaction');
+Route::get('cancel-transaction', [PayPalController::class, 'cancelTransaction'])->name('cancelTransaction');
 
 
 

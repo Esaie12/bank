@@ -141,7 +141,7 @@
                         <div class="balance-area">
                             <b>Solde:</b>
                             <p class="total-blance">
-                                {{Auth::user()->solde}} fcfa
+                                {{Auth::user()->solde}} USD
                                 <a href="#" class="reload-btn"><i class="fas fa-sync"></i></a>
                             </p>
 
@@ -208,3 +208,5 @@
 </body>
 
 </html>
+
+

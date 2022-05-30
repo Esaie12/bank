@@ -18,19 +18,17 @@
 
             <form id="send-money" method="post" class="form bg-offwhite py-5" action={{ route('u.request.confirm') }} >
                 @csrf
-                <input type="hidden" name="type" value="User" >
+                <input type="hidden" name="type" value="Admin" >
                 <div class="text-center">
                     <h3>Details sur le paiement</h3>
 
                 </div>
-                <input type="hidden" name="idRec" value="{{ $info->id }}" >
+
                 <div class="form-group">
                     <label for="amount">Montant</label>
                     <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text currency-icon">$</span></div>
-                        <input type="number" class="form-control" name="amount" data-bv-field="amount" id="amount" value="10
-                        00"
-                            placeholder="">
+                        <input type="number" class="form-control" name="amount" data-bv-field="amount" id="amount" required>
 
                         <div class="input-group-append"> <span class="input-group-text p-0">
                                <select name="devise" id="" class="form-control" >

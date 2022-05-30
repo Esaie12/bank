@@ -18,11 +18,15 @@ class CreateDemandesTable extends Migration
             $table->integer('idUser');
             $table->integer('receve');
             $table->float('amount');
-            $table->string('devise');
+            $table->integer('devise');
             $table->text('description');
             $table->string('delai');
             $table->boolean('statut');//0 Non payé // 1 Payé
             $table->string('datePay')->nullable();
+            $table->string('destinate','15')->nullable();
+            $table->boolean('reject')->default(false);
+            $table->date('reject_date')->nullable();
+            $table->string('reject_raison')->nullable();
             $table->timestamps();
         });
     }

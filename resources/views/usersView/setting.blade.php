@@ -89,36 +89,33 @@
                                 </select>
                             </div>
                         </div>
+
+                        <div class="col-12">
+                            <label for="timezone">Questions de sécurité et reponse</label>
+                        </div>
+                        <?php  $i= 0; ?>
+                        @foreach($les_quizs as $quiz)
+                        <?php  $i+=1; ?>
                         <div class="col-12">
                             <div class="form-group">
-                                <label for="timezone">Questions de sécurité et reponse</label>
-                                <select class="custom-select"  name="quiz">
-                                    @if($item->quiz == 1)
-                                    <option value="1" selected>Quelle est votre couleur préférée ?</option>
-                                    @else
-                                    <option value="1">Quelle est votre couleur préférée ?</option>
-                                    @endif
-
-                                    @if($item->quiz == 2)
-                                    <option value="2" selected >Quel animal aimez vous le plus ?</option>
-                                    @else
-                                    <option value="2">Quel animal aimez vous le plus ?</option>
-                                    @endif
-
-
-
+                                <span class="text-primary">Question {{$i}}:</span>
+                                <select class="custom-select"  name="{{ "quiz".$i}}">
+                                    <option value="{{$quiz->id}}" >{{$quiz->quiz}}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="form-group">
-                                <label for="timezone">Reponse</label>
-                                <input type="text" class="form-control" name="answer" id="" value="<?php if($item->answer != null){ echo $item->answer; } ?>" >
+                                <span class="text-success">Reponse {{$i}}:</span> <?php $on="answer".$i ; ?>
+                                <input type="text" class="form-control" name="{{ "answer".$i}}" id="" value=" <?php if($item->$on != null){ echo $item->$on; } ?>" >
                                 @error('answer')
                                 <span>Veillez entrer une reponse</span>
                                 @enderror
                             </div>
+
                         </div>
+                        @endforeach
+
                         <button class="btn btn-default" type="submit"><i class="far fa-save"></i>Sauvegarder les changements</button>
                     </div>
                 </form>
@@ -161,10 +158,9 @@
                 <h5 class="title">Bloquer son compte</h5>
             </div>
             <div class="edit-content">
-                <form id="change-password" method="post" action="{{ route('u.desactive.account') }}" >
+                <form id="change-password" method="post" action="{{ route('u.desactive.account') }}" onsubmit="return confirm('Voulez-vous vraiment bloquer votre compte ?') "  >
                     @csrf
                     <button class="btn btn-danger" type="submit">Oui, je bloque</button>
-
                 </form>
             </div>
         </div>
@@ -174,7 +170,7 @@
                 <h5 class="title">Debloquer son compte</h5>
             </div>
             <div class="edit-content">
-                <form id="change-password" method="post" action="{{ route('u.active.account') }}" >
+                <form id="change-password" method="post" action="{{ route('u.active.account') }}" onsubmit="return confirm('Vous etes sur le point de débloquer votre compte ') " >
                     @csrf
                     <button class="btn btn-success" type="submit">Oui, je veux debloquer mon compte</button>
 

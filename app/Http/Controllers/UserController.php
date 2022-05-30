@@ -99,22 +99,28 @@ class UserController extends Controller
     }
 
     function Setting(){
-        $data= DB::table('users')->where('id',Auth::user()->id)->get(['language', 'currency', 'is_active' , 'quiz', 'answer']);
+        $data= DB::table('users')->where('id',Auth::user()->id)
+        ->get(['language', 'currency', 'is_active' , 'quiz1_id', 'answer1', 'quiz2_id', 'answer2', 'quiz3_id', 'answer3' ]);
 
 
         return view('usersView.setting',['infos'=>$data]);
     }
 
     function SaveSetting(Request $req){
-        $req->validate([
-            'answer'=>['required', 'string', 'max:255'],
-        ]);
 
         $user = User::find(Auth::user()->id);
         $user->language = $req['language'];
         $user->currency = $req['currency'];
-        $user->quiz=$req['quiz'];
-        $user->answer =$req['answer'];
+
+        $user->quiz1_id=$req['quiz1'];
+        $user->answer1 =$req['answer1'];
+
+        $user->quiz2_id=$req['quiz2'];
+        $user->answer2 =$req['answer2'];
+
+        $user->quiz3_id=$req['quiz3'];
+        $user->answer3 =$req['answer3'];
+
         $user->save();
 
         return redirect()->route('u.setting')->with('msg','Modification enregistrée');
@@ -127,9 +133,11 @@ class UserController extends Controller
         $user->desactivated_at= date('Y-m-d H:i');
         $user->save();
 
-        return "bIne";
 
-        return redirect()->route('u.setting')->with('msg-inactif','Compte à été bloqué');
+        auth()->logout();
+        return redirect('/');
+
+        //return redirect()->route('u.setting')->with('msg-inactif','Compte à été bloqué');
     }
 
     function Actif(Request $req){

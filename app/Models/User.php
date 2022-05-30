@@ -38,8 +38,13 @@ class User extends Authenticatable implements MustVerifyEmail
         //
         'language',
         'currency',
-        'quiz',
-        'answer',
+
+        'quiz1_id',
+        'answer1',
+        'quiz2_id',
+        'answer2',
+        'quiz3_id',
+        'answer3',
         //
 
         'is_active',

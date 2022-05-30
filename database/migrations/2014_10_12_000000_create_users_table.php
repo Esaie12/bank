@@ -40,14 +40,14 @@ class CreateUsersTable extends Migration
             $table->integer('language_id');
             $table->integer('currency_id');
 
-            $table->integer('quiz1_id')->nullable();
-            $table->string('answer')->nullable();
+            $table->bigInteger('quiz1_id')->nullable();
+            $table->string('answer1')->nullable();
 
-            $table->integer('quiz2_id')->nullable();
-            $table->string('answer')->nullable();
+            $table->bigInteger('quiz2_id')->nullable();
+            $table->string('answer2')->nullable();
 
-            $table->integer('quiz3_id')->nullable();
-            $table->string('answer')->nullable();
+            $table->bigInteger('quiz3_id')->nullable();
+            $table->string('answer3')->nullable();
 
             $table->boolean('is_active');
             $table->boolean('admin_can_active_account')->nullable();

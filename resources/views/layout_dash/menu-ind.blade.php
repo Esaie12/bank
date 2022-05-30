@@ -17,6 +17,9 @@
             <li class="{{ request()->routeIs('u.depot') ? 'nav-item active ' : 'nav-item'}}">
                 <a class="nav-link" href="{{route('u.depot')}}"><i class="fas fa-plus"></i>Faire un dépot</a>
             </li>
+            <li class="{{ request()->routeIs('u.make.paiment') ? 'nav-item active ' : 'nav-item'}}">
+                <a class="nav-link" href="{{route('u.make.paiment')}}"><i class="fas fa-plus"></i>Faire un paiement</a>
+            </li>
             <li class="{{ request()->routeIs('u.send') ? 'nav-item active ' : 'nav-item'}}">
                 <a class="nav-link" href="{{route('u.send')}}"><i class="far fa-paper-plane"></i>Envoyer de l'argent</a>
             </li>

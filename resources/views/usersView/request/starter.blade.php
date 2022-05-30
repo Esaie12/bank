@@ -24,6 +24,9 @@
             <div class="form-group">
 
                 <label for="emailID"> A qui voulez-vous demander un depot ?</label>
+                <div class="alert alert-warning">
+                    Si votre demande est destinée à Transfert Union, entrer comme mail depot@transfert.com
+                </div>
 
                 <input type="email" value="{{ @old('email') }}" class="form-control" name="email" required="" placeholder="Entrer son mail">
             </div>
@@ -41,4 +44,5 @@
     </div>
 
 </div>
+
 @endsection
