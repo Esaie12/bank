@@ -13,6 +13,7 @@ use App\Http\Controllers\DepositController;
 use App\Http\Controllers\DemandeController;
 use App\Http\Controllers\PayPalController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\TransactionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -111,6 +112,8 @@ Route::group(['middleware'=>[ 'userAcces', 'authGroup', 'verifiedGroup'] ],funct
         Route::get('/update-profile', [UserController::class, 'Updateprofil' ])->name('update.profil');
         Route::post('/update-profile', [UserController::class, 'SaveProfil' ])->name('profil.save');
         Route::post('/update-account', [UserController::class, 'SavePassword' ])->name('profil.passwordEdit');
+
+        Route::get('/transactions-history', [TransactionController::class, 'History'])->name('transaction');
 
         Route::get('/bank', [CardController::class, 'store'])->name('bank');
         Route::get('/bank/add', [CardController::class, 'Add'])->name('bank.add');

@@ -16,7 +16,7 @@ class CreateDemandesTable extends Migration
         Schema::create('demandes', function (Blueprint $table) {
             $table->id();
             $table->integer('idUser');
-            $table->integer('receve');
+            $table->integer('receve')->nullable();
             $table->float('amount');
             $table->integer('devise');
             $table->text('description');

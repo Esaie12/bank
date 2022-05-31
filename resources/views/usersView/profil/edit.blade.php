@@ -4,7 +4,7 @@
     <h3 class="admin-heading bg-offwhite">
         <a href="{{ route('u.profil') }}" class="" >
             <i class="fas fa-edit mr-1"></i>Voir mon profil</a>
-        <p>Profil Personnel</p>
+        <p>Modifier mes informations</p>
         <span>Retrouvez ici vos différentes informations</span>
     </h3>
     <!-- Edit personal info  -->
@@ -19,7 +19,7 @@
     <div class="infoItems shadow">
         <div class="content-edit-area">
             <div class="edit-header">
-                <h5 class="title">Informations Personnelles</h5>
+                <h5 class="title">Mes Informations</h5>
                 <button type="button" class="close"><span aria-hidden="true">&times;</span></button>
             </div>
 

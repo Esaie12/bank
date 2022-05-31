@@ -15,7 +15,7 @@
         <div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
 
             <div class="form-group">
-                <label for="youSend">You Send</label>
+                <label for="youSend">Je veux : </label>
 
                 <form action="{{ route('createTransaction.confirm') }}" method="POST" >
                     @csrf

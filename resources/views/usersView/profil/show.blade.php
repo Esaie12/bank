@@ -62,13 +62,6 @@
                     <p class="col-sm-3"><b>Address</b></p>
                     <p class="col-sm-9">{{$infos->adresse}}</p>
                 </div>
-                <hr>
-                <div class="row">
-                    <p class="col-sm-3"><b>Services de la société</b></p>
-                    <p class="col-sm-9">
-                        {{$infos->serviceSociete}}
-                    </p>
-                </div>
             </div>
             @elseif(Auth::user()->type_compte == 3)
 

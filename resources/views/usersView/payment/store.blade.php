@@ -11,10 +11,9 @@
         <div class="transaction-title bg-offwhite">
             <div class="items">
                 <div class="row">
-                    <div class="col"><span class="">Date</span></div>
+                    <div class="col-3"><span class="">Date</span></div>
                     <div class="col">Motif</div>
                     <div class="col text-center">Etat</div>
-                    <div class="col">Action</div>
                 </div>
             </div>
         </div>
@@ -23,9 +22,9 @@
             <div class="items">
                 <a href="transactions-details.html">
                     <div class="row">
-                        <div class="col pay-date">
-                            <span class="date">xxxxxx</span>
-                            <span class="pay-month">Jan</span></div>
+                        <div class="col-3">
+                            {{ $item->created_at }}
+                        </div>
                         <div class="col">
                             <span class="name">{{ $item->message }}</span></div>
                         <div class="col text-center">
@@ -44,9 +43,6 @@
                                 <i data-toggle="tooltip" data-original-title="Cancelled" class="fas fa-times-circle"></i>
                             </span>
                             @endif
-                        </div>
-                        <div class="col">
-                            <span class="payment-amaount">- $0.2</span>
                         </div>
                     </div>
                 </a>

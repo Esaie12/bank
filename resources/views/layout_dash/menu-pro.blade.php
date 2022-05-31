@@ -26,8 +26,8 @@
             <li class="{{ request()->routeIs('u.request.starter') ? 'nav-item active ' : 'nav-item'}}">
                 <a class="nav-link" href="{{route('u.request.starter')}}"><i class="fas fa-wallet"></i>Demander d'argent</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="transactions.html"><i class="fas fa-list-ul"></i>Mes transactions</a>
+            <li  class="{{ request()->routeIs('u.transaction') ? 'nav-item active ' : 'nav-item'}}">
+                <a class="nav-link" href="{{route('u.transaction')}}"><i class="fas fa-list-ul"></i>Mes transactions</a>
             </li>
             <li class="{{ request()->routeIs('u.setting') ? 'nav-item active ' : 'nav-item'}}">
                 <a class="nav-link" href="{{route('u.setting')}}"><i class="fas fa-cog"></i>Parametres</a>

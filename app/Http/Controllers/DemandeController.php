@@ -55,7 +55,7 @@ class DemandeController extends Controller
 
             $re = new Demande();
             $re->idUser = Auth::user()->id;
-            $re->receve = 0;
+            $re->receve = null;
             $re->amount = $req['amount'];
             $re->description = $req['description'];
             $re->devise = $req['devise'];
