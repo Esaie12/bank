@@ -42,7 +42,11 @@
         <li class="has-menu-child pro-menu-drop">
             <a href="#">
                 <div class="header-pro-thumb">
+                    @if(Auth::user()->photo == null)
                     <img class="rounded-circle" src="{{asset('dashboard/images/profile.jpg')}}" alt="">
+                    @else
+                    <img class="rounded-circle" src="{{ asset(Auth::user()->photo) }}" alt="">
+                    @endif
                 </div>
                 @if (Auth::user()->firstname == null and Auth::user()->lastname ==null)
                 {{Auth::user()->pseudo}}

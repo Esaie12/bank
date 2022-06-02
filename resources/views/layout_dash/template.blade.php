@@ -10,6 +10,8 @@
     <title>Roysha- Money Transfer and Online Payments HTML Template</title>
 
    @include('includes_dash.cssLink')
+   <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"/>
+
 </head>
 
 <body>
@@ -76,7 +78,7 @@
         <div class="hero-section">
             <div class="container">
                 <div class="row  profile-complete-area">
-                    <div class="col">
+                    <!--div class="col">
                         <div class="progress" data-percentage="50">
                             <span class="progress-left">
                                 <span class="progress-bar"></span>
@@ -86,7 +88,7 @@
                             </span>
                             <div class="progress-value">
                                 <div class="profile-thumb mt-3 mb-4">
-                                    <img class="rounded-circle" src="{{asset('dashboard/images/profile.jpg')}}" alt="">
+                                    <img class="rounded-circle" src="{{ asset(Auth::user()->photo) }}" alt="">
                                     <div class="profile-thumb-edit verify-icon" data-toggle="tooltip" title="Profile Verified">
                                         <i class="fas fa-check"></i>
                                     </div>
@@ -94,19 +96,19 @@
                             </div>
                         </div>
                         <p class="profile-name">Jhone Doue</p>
-                    </div>
+                    </div-->
                     <div class="col">
                         <div class="profile-item">
                             <i class="fas fa-mobile-alt bg-icon"></i>
                             <i class="fas fa-check-circle Verified-icon"></i>
-                            <p class="title">Mobile Added</p>
+                            <p class="title">Numéro Ajouté</p>
                         </div>
                     </div>
                     <div class="col">
                         <div class="profile-item">
                             <i class="fas fa-envelope bg-icon"></i>
                             <i class="fas fa-check-circle Verified-icon"></i>
-                            <p class="title">Email Added</p>
+                            <p class="title">Email Vérifié</p>
                         </div>
                     </div>
                     <div class="col">
@@ -114,7 +116,7 @@
                             <div class="profile-item">
                                 <i class="fas fa-credit-card bg-icon"></i>
                                 <i class="far fa-circle  Verified-icon"></i>
-                                <p class="title">Add Card</p>
+                                <p class="title">Carte Ajouté</p>
                             </div>
                         </a>
                     </div>
@@ -123,7 +125,7 @@
                             <div class="profile-item">
                                 <i class="fas fa-university bg-icon"></i>
                                 <i class="far fa-circle  Verified-icon"></i>
-                                <p class="title">Add Bank</p>
+                                <p class="title">Photo de Profil à jour</p>
                             </div>
                         </a>
                     </div>
@@ -204,6 +206,10 @@
 
     <!-- Script -->
     @include('includes_dash.jsLink')
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+
+
+    @yield('code')
 
 </body>
 

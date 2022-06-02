@@ -59,7 +59,7 @@
                                     @if($item->language == 1)
                                     <option value="1" selected >Français</option>
                                     @else
-                                    <option value="1">Fraçais</option>
+                                    <option value="1">Français</option>
                                     @endif
 
                                     @if($item->language == 2)
@@ -155,12 +155,12 @@
         @if($item->is_active == 1)
         <div class="content-edit-area mt-5">
             <div class="edit-header">
-                <h5 class="title">Bloquer son compte</h5>
+                <h5 class="title">Supprimer son compte</h5>
             </div>
             <div class="edit-content">
                 <form id="change-password" method="post" action="{{ route('u.desactive.account') }}" onsubmit="return confirm('Voulez-vous vraiment bloquer votre compte ?') "  >
                     @csrf
-                    <button class="btn btn-danger" type="submit">Oui, je bloque</button>
+                    <button class="btn btn-danger" type="submit">Supprimé</button>
                 </form>
             </div>
         </div>

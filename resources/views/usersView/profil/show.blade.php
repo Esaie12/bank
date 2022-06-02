@@ -15,10 +15,25 @@
             <li><a data-toggle="tab" href="#menu1" class="active">Informations personnelles</a></li>
             <li><a data-toggle="tab" href="#menu2">Paramètres de connexion et de sécurité</a></li>
         </ul-->
+        <form class="form-group" enctype="multipart/form-data" action="{{ route('u.pp.save') }}" method="POST" >
+            @csrf
+            <div class="row">
+                <div class="col-4">
+                    <input type="file" name="photo" id="" class="">
+                    @error('photo')
+                    <span class="text-danger">Veillez choisir une photo</span>
+                    @enderror
+                </div>
+                <div class="col-4">
+                    <button class="btn btn-primary" type="submit">Changer ma photo </button>
+                </div>
+            </div>
+        </form>
 
         <div class="tab-content">
             @if(Auth::user()->type_compte == 2)
             <div id="menu1" class="tab-pane fade in active">
+
                 <div class="row">
                     <p class="col-sm-3"><b>Pseudo du compte</b></p>
                     <p class="col-sm-9">{{$infos->pseudo}}</p>

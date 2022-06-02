@@ -18,6 +18,31 @@ class UserController extends Controller
         $data= User::find(Auth::user()->id);
         return view('usersView.profil.show',['infos'=>$data]);
     }
+    function PhotoProfil(Request $req){
+
+        $req->validate([
+            'photo'=>'required|file|mimes:png,jpg,jpeg,pdf,docx,doc|max:5000000',
+        ]);
+
+        $dest = public_path('public/upload_profil');
+        $name ='pictur_'.Auth::user()->id.'-'.date('Y-m-d').'.'.$req['photo']->extension();
+
+        $req['photo']->move($dest, $name);
+
+        $pay= User::find(Auth::user()->id);
+        $pay->photo='public/upload_profil/'.$name;
+        $pay->save();
+
+        return redirect()->route('u.profil');
+    }
+    function DeletePhotoProfil(){
+
+        $pay= User::find(Auth::user()->id);
+        $pay->photo=null;
+        $pay->save();
+
+        return redirect()->route('u.profil');
+    }
 
     function Updateprofil(){
         $data= DB::table('users')->where('id',Auth::user()->id)->get();

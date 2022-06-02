@@ -22,7 +22,7 @@
                     <h3 class=" text-success">Success!</h3>
                     <p class="">Transaction Complete</p>
                     <p class="">
-                        Votre demande d'argent a été envoyée à <b>Admin</b>
+                        Votre demande d'argent a été envoyée à <b>Transfert union</b>
                     </p>
 
                     <hr>

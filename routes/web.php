@@ -112,6 +112,8 @@ Route::group(['middleware'=>[ 'userAcces', 'authGroup', 'verifiedGroup'] ],funct
         Route::get('/update-profile', [UserController::class, 'Updateprofil' ])->name('update.profil');
         Route::post('/update-profile', [UserController::class, 'SaveProfil' ])->name('profil.save');
         Route::post('/update-account', [UserController::class, 'SavePassword' ])->name('profil.passwordEdit');
+        Route::post('/edit-profil-picture',[UserController::class, 'PhotoProfil' ] )->name('pp.save');
+        Route::get('/delete-profil-picture',[UserController::class, 'DeletePhotoProfil' ] )->name('pp.delete');
 
         Route::get('/transactions-history', [TransactionController::class, 'History'])->name('transaction');
 
@@ -124,6 +126,7 @@ Route::group(['middleware'=>[ 'userAcces', 'authGroup', 'verifiedGroup'] ],funct
         Route::get('/bank/edit/{id}',[CardController::class, 'Show'])
         ->name('bank.edit')->where("id","[0-9]+");
         Route::post('/bank/edit-save', [CardController::class, 'EditSave'])->name('bank.edit.save');
+
 
         Route::get('/deposit-money', [DepositController::class, 'Start'] )->name('depot');
 
@@ -139,6 +142,7 @@ Route::group(['middleware'=>[ 'userAcces', 'authGroup', 'verifiedGroup'] ],funct
         Route::get('/request-money-payment', [DemandeController::class,'Starter'])->name('request.starter');
         Route::post('/request-money-payment', [DemandeController::class,'Starter_Post'])->name('request.starter');
         Route::post('/request-money-payment-confirm', [DemandeController::class,'Confirm'])->name('request.confirm');
+        //Route::get('/request-send', [DemandeController::class,'RequestSend'])->name('request.send');
 
         Route::get('/settings', [UserController::class, 'Setting' ] )->name('setting');
         Route::post('/settings-account', [UserController::class, 'SaveSetting' ])->name('save.setting');

@@ -43,11 +43,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="description">Description de la demande</label>
-                    <textarea class="form-control p-3" name="description" rows="4" id="description" required
-                        placeholder="Payment Description"></textarea>
-                </div>
-                <div class="form-group">
                     <label for="paymentDue">Paiement doit etre fait avant le</label>
                     <div class="position-relative">
                         <input id="paymentDue" value="" type="text" name="dateBut" class="form-control" required
@@ -55,6 +50,13 @@
                         <span class="icon-inside"><i class="fas fa-calendar-alt"></i></span>
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <label for="description">Description de la demande</label>
+                    <textarea class="form-control p-3" name="description" rows="4" id="description" required
+                        placeholder="Payment Description"></textarea>
+                </div>
+
                 <ul class="pager mt-4">
                     <li></li>
                     <li>

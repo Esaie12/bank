@@ -3,7 +3,7 @@
  
 <div class="profile-content">
     <h3 class="admin-heading bg-offwhite">
-        <p>Voir l'Historique de mes transactions </p>
+        <p>Voir mes demandes d'argent </p>
 
     </h3>
     <div class="row">

@@ -31,7 +31,7 @@ class PaymentController extends Controller
         $pay->author_name=Auth::user()->pseudo;
         $pay->user_id=Auth::user()->id;
         $pay->message=$req['message'];
-        $pay->image='upload_files/'.$name;
+        $pay->image='public/upload_files/'.$name;
         $pay->save();
 
         return view('usersView.payment.starter',['msg'=>'success']);

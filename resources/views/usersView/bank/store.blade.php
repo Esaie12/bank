@@ -26,7 +26,7 @@
                 <div class="row">
                     <div class="col-12">
                         <p class="valid-card">Expire </p> <br>
-                        <p class="expare ">{{  $item->dateExp}}</p>
+                        <p class="expare ">{{ date('M-Y', strtotime( $item->dateExp)) }}</p>
                     </div>
                 </div>
                 <div class="row">
@@ -35,7 +35,15 @@
                         <p class="text-success ">Approved</p>
                     </div>
                     <div class="col-6">
-                        <img class="ml-auto" src="{{asset('dashboard/images/visa.png')}}" alt="visa" title="">
+                        @switch($item->provider)
+                            @case(1)
+                                <img class="ml-auto" src="{{asset('dashboard/images/visa.png')}}" alt="visa" title="">
+                                @break
+                            @case(2 or 3 or 4)
+                                <img class="ml-auto" src="{{asset('dashboard/images/mastercard.png')}}" alt="visa" title="">
+                                @break
+                            @default
+                        @endswitch
                     </div>
                 </div>
                 <div class="account-card-overlay">

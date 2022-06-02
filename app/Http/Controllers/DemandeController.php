@@ -29,7 +29,12 @@ class DemandeController extends Controller
                 $data= User::where('email', $req['email'])->first();
 
                 if(!empty($data)){
-                    return view('usersView.request.validate',['info'=>$data]);
+                    if($data->type_compte == Auth::user()->type_compte){
+                        return view('usersView.request.validate',['info'=>$data]);
+                    }else{
+                        return view('usersView.request.starter',['msg'=>"error"]);
+                    }
+
                 }else{
                     return view('usersView.request.starter',['msg'=>"error"]);
                 }
@@ -55,7 +60,7 @@ class DemandeController extends Controller
 
             $re = new Demande();
             $re->idUser = Auth::user()->id;
-            $re->receve = null;
+            $re->receve = Auth::user()->id;
             $re->amount = $req['amount'];
             $re->description = $req['description'];
             $re->devise = $req['devise'];
@@ -115,5 +120,13 @@ class DemandeController extends Controller
             return view('usersView.request.success',['infos'=>$req]);
         }
 
+    }
+
+    function RequestSend(){
+        $data= DB::table('demandes')->join('users', 'users.id', 'demandes.idUser')
+        ->where('demandes.idUser',Auth::user()->id)->get(['demandes.*', 'users.pseudo']);
+
+        return $data;
+        return view('usersView.request.storeSend');
     }
 }

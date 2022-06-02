@@ -34,8 +34,19 @@ class DepositController extends Controller
             if($req['email'] != Auth::user()->email){
                 $data= User::where('email', $req['email'])->first();
 
+
+
                 if(!empty($data)){
-                    return view('usersView.sendMoney.validate',['info'=>$data]);
+
+                    if($data->type_compte == Auth::user()->type_compte){
+
+                        return view('usersView.sendMoney.validate',['info'=>$data]);
+
+                    }else{
+                        return view('usersView.sendMoney.starter',['msg'=>"error"]);
+                    }
+
+
                 }else{
                     return view('usersView.sendMoney.starter',['msg'=>"error"]);
                 }
@@ -122,6 +133,10 @@ class DepositController extends Controller
 
                 $us = User::find(Auth::user()->id);
                 $us->solde=$solde- $req['amount'];
+                $us->save();
+
+                $us = User::find($req['idRec']);
+                $us->solde= $us->solde + $req['amount'];
                 $us->save();
 
                 $tr= new Transaction();
