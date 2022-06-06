@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
+use Stripe;
+use Illuminate\Support\Str;
 
 class PayPalController extends Controller
 {
@@ -68,6 +70,55 @@ class PayPalController extends Controller
                     ->route('createTransaction')
                     ->with('error', $response['message'] ?? 'Something went wrong.');
             }
+
+        }elseif($request['method_transaction']=="Stripe"){
+
+            try {
+                $this->validate($request, [
+                    'card_no' => 'required',
+                    'expiry_month' => 'required',
+                    'expiry_year' => 'required',
+                    'cvv' => 'required',
+                ]);
+
+                $stripe = Stripe\Stripe::setApiKey(config('stripe.secret_key'));
+
+                $response = \Stripe\Token::create(array(
+                    "card" => array(
+                        "number" => $request->input('card_no'),
+                        "exp_month" => $request->input('expiry_month'),
+                        "exp_year" => $request->input('expiry_year'),
+                        "cvc" => $request->input('cvv'),
+                    )
+                ));
+
+                $charge = \Stripe\Charge::create([
+                    'card' => $response['id'],
+                    'currency' => 'USD',
+                    'amount' => $amount * 100,
+                    'description' =>  "Test de paiement du blog paki leonel.",
+                ]);
+                if ($charge['status'] == 'succeeded') {
+                    return response()->json([
+                        'status' => 'ok',
+                        'message' => "Payment Complete",
+                    ], 200);
+                } else {
+                    return response()->json(['status' => 'error', "message" => "Payment Failed"], 500);
+                }
+            } catch (\Exception $e) {
+                return response()->json(['status' => 'error', 'error' => $e->getMessage(), "message" => "Payment Failed"], 500);
+            }
+
+           /* Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+            Stripe\Charge::create ([
+                    "amount" => 100 * 100,
+                    "currency" => "usd",
+                    "source" => $request->stripeToken,
+                    "description" => "Test payment from itsolutionstuff.com."
+            ]);
+
+            Session::flash('success', 'Payment successful!');*/
 
         }
 

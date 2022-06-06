@@ -77,7 +77,10 @@ class UserController extends Controller
 
         }elseif($req['type']=="pro"){
 
+
             $user = User::find($req['id']);
+
+            $user->typeSociete = $req['typeSociete'];
 
             $user->pseudo = $req['pseudo'];
             $user->firstname = $req['firstname'];
@@ -87,6 +90,27 @@ class UserController extends Controller
             $user->telephoneSociete = $req['telephoneSociete'];
             $user->adresse = $req['adresse'];
             $user->adresseSociete = $req['adresseSociete'];
+
+            if($req['pictureCI'] != null){
+
+                $dest = public_path('public/upload_files');
+                $name ='pictureCI'.Auth::user()->id.'-'.date('Y-m-d H:i').'.'.$req['pictureCI']->extension();
+
+                $req['pictureCI']->move($dest, $name);
+                $user->carte_identity = 'public/upload_files'.$name;
+
+            }
+
+            if($req['rcommerce'] !=null){
+
+                $dest = public_path('public/upload_files');
+                $name ='rCom'.Auth::user()->id.'-'.date('Y-m-d H:i').'.'.$req['rcommerce']->extension();
+
+                $req['rcommerce']->move($dest, $name);
+                $user->rcommerce = 'public/upload_files'.$name;
+
+            }
+
             $user->save();
 
         }

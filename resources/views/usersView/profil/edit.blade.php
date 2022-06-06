@@ -28,7 +28,7 @@
             @enderror
 
             <div class="edit-content">
-                <form  method="post" action="{{ route('u.profil.save') }}" >
+                <form  method="POST" enctype="multipart/form-data" action="{{ route('u.profil.save') }}" >
                     @csrf
                     <input type="hidden" name="id" value="{{ $item->id }}" >
 
@@ -108,6 +108,40 @@
                     @elseif(Auth::user()->type_compte ==3)
                     <input type="hidden" name="type" value="pro" >
                     <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="typeSociete"><b>Type de la société</b></label>
+                                <select name="typeSociete" id="" class="form-control" >
+                                    <option value="SARL">SARL</option>
+                                    <option value="SAS">SAS</option>
+                                    <option value="SA">SA</option>
+                                    <option value="Etablissement">Etablissement</option>
+                                    <option value="Autres">Autres</option>
+                                </select>
+                            </div>
+                        </div>
+                        @if(Auth::user()->pro_verified == 1)
+                        <div class="col-6">
+                            <span class="text-success">Votre compte est vérifié</span>
+                        </div>
+                        @else
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for=""><b>Carte d'identité</b></label>
+                                <input type="file" name="pictureCI" id="">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for=""><b>Registre de commerce</b></label>
+                                <input type="file" name="rcommerce" id="">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                        </div>
+                        @endif
+
+
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="firstName"><b>Nom de la société</b></label>

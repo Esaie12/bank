@@ -46,6 +46,11 @@ class User extends Authenticatable implements MustVerifyEmail
         'quiz3_id',
         'answer3',
         //
+        'typeSociete',
+        'carte_identity',
+        'rcommerce',
+        'pro_verified',
+        //
 
         'is_active',
         'admin_can_active_account',

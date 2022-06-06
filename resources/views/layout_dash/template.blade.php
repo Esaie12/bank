@@ -100,8 +100,13 @@
                     <div class="col">
                         <div class="profile-item">
                             <i class="fas fa-mobile-alt bg-icon"></i>
-                            <i class="fas fa-check-circle Verified-icon"></i>
                             <p class="title">Numéro Ajouté</p>
+
+                            @if(Auth::user()->telephoneUser != null or Auth::user()->telephoneSociete !=null)
+                              <i class="fas fa-check-circle Verified-icon"></i>
+                            @else
+                                <i class="far fa-circle  Verified-icon"></i>
+                            @endif
                         </div>
                     </div>
                     <div class="col">
@@ -116,6 +121,7 @@
                             <div class="profile-item">
                                 <i class="fas fa-credit-card bg-icon"></i>
                                 <i class="far fa-circle  Verified-icon"></i>
+
                                 <p class="title">Carte Ajouté</p>
                             </div>
                         </a>
@@ -124,7 +130,12 @@
                         <a href="#">
                             <div class="profile-item">
                                 <i class="fas fa-university bg-icon"></i>
-                                <i class="far fa-circle  Verified-icon"></i>
+                                @if(Auth::user()->photo != null)
+                                    <i class="fas fa-check-circle Verified-icon"></i>
+                                @else
+                                    <i class="far fa-circle  Verified-icon"></i>
+                                @endif
+
                                 <p class="title">Photo de Profil à jour</p>
                             </div>
                         </a>

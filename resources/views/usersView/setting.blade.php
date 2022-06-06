@@ -19,6 +19,7 @@
 
 
         <div class="content-edit-area mt-4">
+
             <div class="edit-header">
                 <h5 class="title">Paramètres du compte</h5>
             </div>

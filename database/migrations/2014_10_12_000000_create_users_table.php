@@ -49,6 +49,11 @@ class CreateUsersTable extends Migration
             $table->bigInteger('quiz3_id')->nullable();
             $table->string('answer3')->nullable();
 
+            $table->string('typeSociete')->nullable();
+            $table->string('carte_identity')->nullable();
+            $table->string('rcommerce')->nullable();
+            $table->boolean('pro_verified')->default(false)->nullable();
+
             $table->boolean('is_active');
             $table->boolean('admin_can_active_account')->nullable();
             $table->string('desactivated_by')->nullable();
